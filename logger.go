@@ -1,7 +1,8 @@
 package logger
 
 import (
-	"log"
+	"fmt"
+	"os"
 	"strings"
 )
 
@@ -42,9 +43,20 @@ var colorCodes = map[LogLevel]string{
 	Panic:   "\033[35m", // magenta for Panic
 }
 
-func Log(l LogLevel, msg ...string) {
-	if l == Panic {
-		log.Fatalf("%s[%s]%s %s\n", colorCodes[l], l.String(), colorReset, strings.Join(msg, " "))
+func Log(l LogLevel, v ...any) {
+	var msgArgs []string
+	for _, arg := range v {
+		msgArgs = append(msgArgs, fmt.Sprint(arg))
 	}
-	log.Printf("%s[%s]%s %s\n", colorCodes[l], l.String(), colorReset, strings.Join(msg, " "))
+	inlogMsg := strings.Join(msgArgs, " ")
+	logMsg := fmt.Sprintf("%s[%s]%s %s\n", colorCodes[l], l.String(), colorReset, inlogMsg)
+	if l == Panic {
+		fmt.Print(logMsg)
+		os.Exit(1)
+	}
+	fmt.Print(logMsg)
 }
+
+// func logmessage(msg ...any)string{
+// 	return
+// }
