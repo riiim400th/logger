@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/riiim400th/logger"
+	l "github.com/riiim400th/logger"
 )
 
 func main() {
@@ -20,8 +20,8 @@ func main() {
 	a_.Email = "hoge@example.com"
 	a_.NickName = "hogehoge"
 	log.Default().Print(a_)
-	logger.Log(logger.Debug, a_)
-	logger.Log(logger.Info, "bbbb", "hogehoge")
-	logger.Log(logger.Error, "gefdksjal;df")
-	logger.Log(logger.Panic, "hoge?")
+	l.P(0, a_)
+	l.P(l.Info, "bbbb", "hogehoge")
+	l.P(l.Error, "gefdksjal;df")
+	l.P(l.Panic, "hoge?")
 }
