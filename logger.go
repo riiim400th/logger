@@ -58,6 +58,10 @@ func P(l LogLevel, v ...any) {
 	fmt.Print(logMsg)
 }
 
+func Log(l LogLevel, v ...any) {
+	P(l, v...)
+}
+
 // func logmessage(msg ...any)string{
 // 	return
 // }

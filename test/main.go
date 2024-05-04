@@ -20,8 +20,8 @@ func main() {
 	a_.Email = "hoge@example.com"
 	a_.NickName = "hogehoge"
 	log.Default().Print(a_)
-	l.P(0, a_)
-	l.P(l.Info, "bbbb", "hogehoge")
+	l.Log(0, a_)
+	l.Log(l.Info, "bbbb", "hogehoge")
 	l.P(l.Error, "gefdksjal;df")
 	l.P(l.Panic, "hoge?")
 }
