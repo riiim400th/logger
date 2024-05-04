@@ -22,6 +22,7 @@ func main() {
 	log.Default().Print(a_)
 	l.Log(0, a_)
 	l.Log(l.Info, "bbbb", "hogehoge")
-	l.P(l.Error, "gefdksjal;df")
-	l.P(l.Panic, "hoge?")
+	l.Log(l.Error, "gefdksjal;df")
+	l.P("hoge")
+	l.Log(l.Panic, "hoge?")
 }

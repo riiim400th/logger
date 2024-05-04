@@ -44,7 +44,7 @@ var colorCodes = map[LogLevel]string{
 	Panic:   "\033[35m", // magenta for Panic
 }
 
-func P(l LogLevel, v ...any) {
+func Log(l LogLevel, v ...any) {
 	var msgArgs []string
 	for _, arg := range v {
 		msgArgs = append(msgArgs, fmt.Sprint(arg))
@@ -58,8 +58,8 @@ func P(l LogLevel, v ...any) {
 	fmt.Print(logMsg)
 }
 
-func Log(l LogLevel, v ...any) {
-	P(l, v...)
+func P(v ...any) {
+	Log(Info, v...)
 }
 
 // func logmessage(msg ...any)string{
