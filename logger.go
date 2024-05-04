@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 )
 
 type LogLevel int
@@ -49,7 +50,7 @@ func Log(l LogLevel, v ...any) {
 		msgArgs = append(msgArgs, fmt.Sprint(arg))
 	}
 	inlogMsg := strings.Join(msgArgs, " ")
-	logMsg := fmt.Sprintf("%s[%s]%s %s\n", colorCodes[l], l.String(), colorReset, inlogMsg)
+	logMsg := fmt.Sprintf("%s[%s]%s %s %s\n", colorCodes[l], l.String(), colorReset, time.Now().Format("2006-01-02 - 15:04:05"), inlogMsg)
 	if l == Panic {
 		fmt.Print(logMsg)
 		os.Exit(1)
